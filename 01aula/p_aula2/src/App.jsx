@@ -1,12 +1,14 @@
 import './App.css'
 import Change from './Change'
 import Conditional from './Conditional'
+import Props from './Props'
 function App() {
 
   return (
     <>
-      <Conditional/>
-      <Change/>
+      {/* <Conditional/> */}
+      {/* <Change/> */}
+      <Props nome="NAME" newname="NEWNAME" />
     </>
   )
 }
