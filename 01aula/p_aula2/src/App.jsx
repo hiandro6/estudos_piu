@@ -6,8 +6,8 @@ function App() {
 
   return (
     <>
-      {/* <Conditional/> */}
-      {/* <Change/> */}
+      <Conditional/>
+      <Change/>
       <Props nome="NAME" newname="NEWNAME" />
     </>
   )
