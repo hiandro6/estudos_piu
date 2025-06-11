@@ -6,7 +6,8 @@ export default function Detalhes({detalhada}){
     return (
         <div style={{ border: "2px solid", padding: "10px", width: "400px", margin:"30px auto" }}>
             <h2>detalhes da tarefa: </h2>
-            {detalhada}
+            {detalhada.descricao} status = 
+            {detalhada.status}
         </div>
     )
 }
