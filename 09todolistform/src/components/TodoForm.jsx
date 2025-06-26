@@ -6,7 +6,7 @@ export default function TodoForm() {
     function handleSubmit(e) {
         e.preventDefault()
         SetLista(...lista, tarefa)
-        SetTarefa([])
+        SetTarefa("")
     }
 
     const handleClear = () => {
