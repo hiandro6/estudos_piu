@@ -1,0 +1,50 @@
+from fastapi import FastAPI,HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from models import Livro
+from typing import List
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+livros:List[Livro]=[]
+
+@app.get("/livros",response_model=List[Livro])
+def listar_livros():
+    return livros
+    
+@app.get("/livros/{titulo}",response_model=Livro)
+def listar_livro( titulo:str):
+    for livro in livros:
+        if livro.titulo == titulo:
+            return livro
+    raise HTTPException(404,"Não localizado")
+
+@app.delete("/livros/{titulo}",response_model=Livro)
+def deletar_livro(titulo:str):
+    for id, livro in enumerate(livros):
+        if livro.titulo == titulo:
+            livros.pop(id)
+            return livro
+    raise HTTPException(404,"Não localizado")
+
+@app.post("/livros", response_model=Livro)
+def criar_livro(livro:Livro):
+    livros.append(livro)
+    return livro
+    
+
+@app.put("/livros/{titulo}", response_model=Livro)
+def editar_livro(titulo:str, novoLivro: Livro):
+    for livro in livros:
+        if livro.titulo == titulo:
+            livro.titulo = novoLivro.titulo
+            livro.ano = novoLivro.ano
+            livro.edicao = novoLivro.edicao
+            return livro
+    raise HTTPException(404, "Não localizado")
