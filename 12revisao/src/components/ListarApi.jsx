@@ -29,7 +29,7 @@ export default function EffectAPI() {
 
     return (
         <div>
-            <h1>Lista de Usuários</h1>
+            <h1>Lista de Albuns</h1>
             <input 
                 type="number" 
                 placeholder="Digite um ID de 1 a 10"
